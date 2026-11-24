@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>OSISPaperless — Portal Distribusi QR Code Resmi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="brand-mark" aria-hidden="true">OP</div>
+      <span class="pill">Portal Internal OSIS &amp; MPK SMA • Distribusi Eksklusif QR Code</span>
+      <h1>OSISPaperless Installer Portal</h1>
+      <p>
+        Satu-satunya pintu resmi mengunduh aplikasi rapat paperless. Tidak ada tautan unduh publik —
+        masukkan <strong>Kode Sesi Rapat</strong> dari Pimpinan Rapat lalu pindai <strong>Dynamic QR Code</strong>.
+      </p>
+    </header>
+
+    <div class="stack">
+      <!-- Form Kode Sesi Rapat -->
+      <section class="card" aria-labelledby="session-heading">
+        <h2 id="session-heading" style="margin:0 0 10px;font-size:1.05rem;">1. Verifikasi Kode Sesi Rapat</h2>
+        <form id="session-form" novalidate>
+          <div class="field">
+            <label for="session-code">Kode Sesi Rapat</label>
+            <span id="session-hint" class="hint">4–16 karakter huruf/angka dari Pimpinan Rapat (uji coba: <strong>OSIS26</strong>).</span>
+            <div class="input-row">
+              <input
+                type="text"
+                id="session-code"
+                name="sessionCode"
+                required
+                minlength="4"
+                maxlength="16"
+                pattern="[A-Za-z0-9]{4,16}"
+                autocomplete="off"
+                placeholder="OSIS26"
+                aria-describedby="session-hint"
+                data-error="session-error"
+              />
+              <button type="submit" class="btn" id="generate-btn">Tampilkan QR Code</button>
+            </div>
+            <div id="session-error" class="error-msg">
+              <span role="img" aria-label="Error">❌</span> Masukkan Kode Sesi Rapat 4–16 karakter (huruf dan angka saja).
+            </div>
+          </div>
+          <div id="form-status" class="notice" hidden></div>
+        </form>
+      </section>
+
+      <!-- Tabs Pilihan Platform -->
+      <section class="card" aria-labelledby="platform-heading">
+        <h2 id="platform-heading" style="margin:0 0 12px;font-size:1.05rem;">2. Pilih Platform &amp; Pindai QR Code</h2>
+
+        <div class="tablist" role="tablist" aria-label="Pilih platform aplikasi">
+          <button type="button" role="tab" id="tab-mobile" aria-selected="true" tabindex="0">
+            Unduh Aplikasi Mobile (.apk)
+          </button>
+          <button type="button" role="tab" id="tab-desktop" aria-selected="false" tabindex="-1">
+            Unduh Aplikasi Desktop (.exe / .dmg / .AppImage)
+          </button>
+        </div>
+
+        <!-- Panel Mobile Android -->
+        <div role="tabpanel" id="panel-mobile" aria-labelledby="tab-mobile">
+          <div class="panel-inner">
+            <div class="qr-stage" id="mobile-qr-stage">
+              <p style="margin:0;color:var(--muted);font-size:0.9rem;">
+                Masukkan <strong>Kode Sesi Rapat</strong> di atas untuk memunculkan Dynamic QR Code Android.
+              </p>
+            </div>
+            <div>
+              <span class="pill success" style="margin-bottom:10px;">Android 7.0+ (APK Resmi)</span>
+              <h3 style="margin:0 0 8px;font-size:1.02rem;">Cara Instal di HP Android</h3>
+              <ol class="steps">
+                <li>Masukkan <strong>Kode Sesi Rapat</strong> di langkah 1 agar QR Code aktif selama 5 menit.</li>
+                <li>Pindai QR Code di samping menggunakan kamera HP / Google Lens.</li>
+                <li>Browser HP otomatis mengunduh <strong>OSISPaperless-Android.apk</strong>.</li>
+                <li>Buka file APK → izinkan <em>Instal aplikasi tidak dikenal</em> → selesai.</li>
+                <li>Buka aplikasi, masuk dengan akun peserta (PIN demo: <strong>1234</strong>).</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Desktop -->
+        <div role="tabpanel" id="panel-desktop" aria-labelledby="tab-desktop" hidden="until-found">
+          <div class="panel-inner">
+            <div class="qr-stage" id="desktop-qr-stage">
+              <p style="margin:0;color:var(--muted);font-size:0.9rem;">
+                Masukkan <strong>Kode Sesi Rapat</strong> di atas untuk memunculkan QR Verifikasi Desktop.
+              </p>
+            </div>
+            <div>
+              <span class="pill" style="margin-bottom:10px;">Windows • macOS • Linux</span>
+              <h3 style="margin:0 0 8px;font-size:1.02rem;">Verifikasi QR via HP untuk Laptop</h3>
+              <ol class="steps">
+                <li>Pindai QR Code di samping menggunakan <strong>kamera HP Anda</strong>.</li>
+                <li>HP akan menampilkan <strong>Kode Verifikasi 6 digit</strong> sementara.</li>
+                <li>Ketik 6 digit kode tersebut di bawah ini untuk memulai unduhan sekali pakai di laptop.</li>
+              </ol>
+
+              <form id="desktop-verify-form" style="margin-top:14px;" novalidate>
+                <div class="field">
+                  <label for="verify-code">Kode Verifikasi 6 Digit (dari hasil scan HP)</label>
+                  <span id="verify-hint" class="hint">Masukkan 6 angka yang tampil di layar HP setelah memindai QR.</span>
+                  <div class="input-row">
+                    <input
+                      type="text"
+                      id="verify-code"
+                      name="verifyCode"
+                      inputmode="numeric"
+                      required
+                      pattern="[0-9]{6}"
+                      maxlength="6"
+                      placeholder="123456"
+                      aria-describedby="verify-hint"
+                      data-error="verify-error"
+                    />
+                    <button type="submit" class="btn secondary" id="verify-btn" disabled>Verifikasi &amp; Unduh</button>
+                  </div>
+                  <div id="verify-error" class="error-msg">
+                    <span role="img" aria-label="Error">❌</span> Masukkan tepat 6 digit angka dari hasil pindai QR di HP.
+                  </div>
+                </div>
+                <div id="desktop-status" class="notice" hidden></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      OSISPaperless • Token QR ditandatangani HMAC-SHA256 &amp; kedaluwarsa otomatis dalam 5 menit • Tidak diindeks mesin pencari.
+    </footer>
+  </main>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

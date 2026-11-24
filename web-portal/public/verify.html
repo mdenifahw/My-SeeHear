@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <title>Kode Verifikasi Desktop — OSISPaperless</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="shell" style="max-width:460px;">
+    <section class="card" style="text-align:center;">
+      <span class="pill">Verifikasi QR Desktop</span>
+      <h1 style="margin:12px 0 6px;font-size:1.35rem;">Kode Verifikasi Unduh</h1>
+      <p style="margin:0 0 18px;color:var(--muted);font-size:0.9rem;">
+        Ketik 6 digit kode berikut pada browser laptop Anda untuk memulai unduhan installer Desktop OSISPaperless.
+      </p>
+      <div id="code-display" style="font-size:2.4rem;font-weight:800;letter-spacing:0.25em;padding:16px;border-radius:14px;background:var(--primary-soft);color:var(--primary-dark);">
+        ••••••
+      </div>
+      <p id="status-msg" style="margin:14px 0 0;color:var(--muted);font-size:0.86rem;">Memverifikasi token QR…</p>
+    </section>
+  </main>
+
+  <script type="module">
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    const codeEl = document.getElementById("code-display");
+    const statusEl = document.getElementById("status-msg");
+
+    if (!token) {
+      codeEl.textContent = "—";
+      statusEl.textContent = "Token QR tidak ditemukan. Pindai ulang QR Code dari layar laptop.";
+      statusEl.style.color = "var(--danger)";
+    } else {
+      fetch(`/api/verify-desktop?token=${encodeURIComponent(token)}`)
+        .then(async (r) => ({ ok: r.ok, data: await r.json() }))
+        .then(({ ok, data }) => {
+          if (!ok) {
+            codeEl.textContent = "403";
+            statusEl.textContent = data.error || "QR Code kedaluwarsa.";
+            statusEl.style.color = "var(--danger)";
+            return;
+          }
+          codeEl.textContent = data.verifyCode;
+          statusEl.textContent = `Valid untuk Kode Sesi ${data.sessionCode}. Masukkan segera di laptop Anda.`;
+          statusEl.style.color = "var(--success)";
+        })
+        .catch(() => {
+          statusEl.textContent = "Gagal terhubung ke server.";
+          statusEl.style.color = "var(--danger)";
+        });
+    }
+  </script>
+</body>
+</html>

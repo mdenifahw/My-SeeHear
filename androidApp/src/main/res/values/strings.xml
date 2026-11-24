@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">OSISPaperless</string>
+    <string name="notification_listener_label">OSISPaperless — Pratinjau Notifikasi Fokus</string>
+</resources>

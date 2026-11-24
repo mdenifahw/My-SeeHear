@@ -1,0 +1,13 @@
+{
+  "name": "osis-paperless-qr-portal",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portal Distribusi Eksklusif QR Code untuk OSISPaperless (Vercel)",
+  "scripts": {
+    "dev": "node dev-server.mjs"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  }
+}
