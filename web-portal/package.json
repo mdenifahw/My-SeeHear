@@ -1,9 +1,9 @@
 {
-  "name": "osis-paperless-qr-portal",
+  "name": "my-seehear-qr-portal",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Portal Distribusi Eksklusif QR Code untuk OSISPaperless (Vercel)",
+  "description": "Portal Distribusi Eksklusif QR Code untuk My SeeHear (Vercel)",
   "scripts": {
     "dev": "node dev-server.mjs"
   },

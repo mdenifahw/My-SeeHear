@@ -34,15 +34,15 @@ jobs:
         run: ./gradlew :androidApp:assembleDebug :shared:desktopTest --no-daemon
 
       - name: Rename APK asset
-        run: cp androidApp/build/outputs/apk/debug/androidApp-debug.apk OSISPaperless-Android.apk
+        run: cp androidApp/build/outputs/apk/debug/androidApp-debug.apk MySeeHear-Android.apk
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.event.inputs.tag || github.ref_name }}
-          name: "OSISPaperless ${{ github.event.inputs.tag || github.ref_name }}"
+          name: "My SeeHear ${{ github.event.inputs.tag || github.ref_name }}"
           body: |
-            Rilis resmi **OSISPaperless** untuk perangkat Android.
-            Unduh hanya melalui **Portal QR Code OSIS** (Vercel) menggunakan Kode Sesi Rapat dari Pimpinan Rapat.
+            Rilis resmi **My SeeHear** untuk perangkat Android.
+            Unduh hanya melalui **Portal QR Code My SeeHear** (Vercel) menggunakan Kode Sesi Rapat dari Pimpinan Rapat.
           files: |
-            OSISPaperless-Android.apk
+            MySeeHear-Android.apk

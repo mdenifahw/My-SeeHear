@@ -6,7 +6,7 @@ import { verifyDownloadToken } from "./_lib/token.js";
  */
 async function resolveInstallerStream(platform) {
   const directEnv = platform === "desktop" ? process.env.DESKTOP_DOWNLOAD_URL : process.env.APK_DOWNLOAD_URL;
-  const filename = platform === "desktop" ? "OSISPaperless-Desktop.zip" : "OSISPaperless-Android.apk";
+  const filename = platform === "desktop" ? "MySeeHear-Desktop.zip" : "MySeeHear-Android.apk";
   const contentType =
     platform === "desktop" ? "application/octet-stream" : "application/vnd.android.package-archive";
 
@@ -30,7 +30,7 @@ async function resolveInstallerStream(platform) {
 
   const ghHeaders = {
     Accept: "application/vnd.github+json",
-    "User-Agent": "OSISPaperless-QR-Portal",
+    "User-Agent": "MySeeHear-QR-Portal",
   };
   if (process.env.GITHUB_TOKEN) {
     ghHeaders.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -49,7 +49,7 @@ async function resolveInstallerStream(platform) {
 
   const assetHeaders = {
     Accept: "application/octet-stream",
-    "User-Agent": "OSISPaperless-QR-Portal",
+    "User-Agent": "MySeeHear-QR-Portal",
   };
   if (process.env.GITHUB_TOKEN) {
     assetHeaders.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
@@ -73,11 +73,11 @@ export default async function handler(req, res) {
     res.setHeader("Content-Type", "text/html; charset=utf-8");
     return res.status(403).send(`<!doctype html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Akses Ditolak — OSISPaperless</title>
+<meta name="robots" content="noindex,nofollow"><title>Akses Ditolak — My SeeHear</title>
 <style>body{font-family:system-ui,sans-serif;background:#F4F7FC;color:#1E293B;display:grid;place-items:center;min-height:100vh;margin:0;padding:20px}
 .card{background:#fff;border:1px solid #DCE6F7;border-radius:16px;padding:24px;max-width:420px;text-align:center}
 h1{font-size:1.2rem;color:#B91C1C;margin:0 0 8px}p{font-size:.95rem;color:#64748B;line-height:1.5}</style></head>
-<body><div class="card"><h1>Unduhan Ditolak (403)</h1><p>${check.reason}</p><p>File installer OSISPaperless hanya dapat diunduh melalui pindai <strong>Dynamic QR Code</strong> di Portal Resmi.</p></div></body></html>`);
+<body><div class="card"><h1>Unduhan Ditolak (403)</h1><p>${check.reason}</p><p>File installer My SeeHear hanya dapat diunduh melalui pindai <strong>Dynamic QR Code</strong> di Portal Resmi.</p></div></body></html>`);
   }
 
   if (check.payload.k !== "download") {
@@ -90,11 +90,11 @@ h1{font-size:1.2rem;color:#B91C1C;margin:0 0 8px}p{font-size:.95rem;color:#64748
       res.setHeader("Content-Type", "text/html; charset=utf-8");
       return res.status(503).send(`<!doctype html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Konfigurasi Installer — OSISPaperless</title>
+<title>Konfigurasi Installer — My SeeHear</title>
 <style>body{font-family:system-ui,sans-serif;background:#F4F7FC;color:#1E293B;display:grid;place-items:center;min-height:100vh;margin:0;padding:20px}
 .card{background:#fff;border:1px solid #DCE6F7;border-radius:16px;padding:24px;max-width:460px}code{background:#EAF1FE;color:#4A7CE0;padding:2px 6px;border-radius:6px}</style></head>
 <body><div class="card"><h2>Token QR Valid ✓</h2><p>Namun sumber file installer belum dihubungkan di Vercel Environment Variables.</p>
-<p>Atur <code>GITHUB_REPO</code> (mis. <code>username/osis-paperless</code>) atau <code>APK_DOWNLOAD_URL</code> di pengaturan proyek Vercel Anda.</p></div></body></html>`);
+<p>Atur <code>GITHUB_REPO</code> (mis. <code>username/my-seehear</code>) atau <code>APK_DOWNLOAD_URL</code> di pengaturan proyek Vercel Anda.</p></div></body></html>`);
     }
 
     const { upstream, filename, contentType } = resolved;

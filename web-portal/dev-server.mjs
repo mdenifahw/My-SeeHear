@@ -59,5 +59,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`OSISPaperless QR Portal running at http://localhost:${PORT}`);
+  console.log(`My SeeHear QR Portal running at http://localhost:${PORT}`);
 });

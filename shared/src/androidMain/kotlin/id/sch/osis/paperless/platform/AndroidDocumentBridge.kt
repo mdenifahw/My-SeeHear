@@ -245,7 +245,7 @@ class AndroidDocumentBridge(private val activity: ComponentActivity) : DocumentB
                 }
             }
 
-            drawWrapped("NOTULENSI & POIN REVISI — OSISPAPERLESS", titlePaint, 22f)
+            drawWrapped("NOTULENSI & POIN REVISI — MY SEEHEAR", titlePaint, 22f)
             drawWrapped("Rapat: $sessionTitle (Kode: $sessionCode)", metaPaint, 15f)
             drawWrapped("Dokumen: $documentTitle • Tanggal: ${formatDate(nowMillis())}", metaPaint, 18f)
             y += 8f
@@ -261,7 +261,7 @@ class AndroidDocumentBridge(private val activity: ComponentActivity) : DocumentB
             }
 
             pdf.finishPage(page)
-            val dir = File(activity.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "OSISPaperless").apply { mkdirs() }
+            val dir = File(activity.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "MySeeHear").apply { mkdirs() }
             val outFile = File(dir, "Notulensi_${sessionCode}_${nowMillis()}.pdf")
             FileOutputStream(outFile).use { pdf.writeTo(it) }
             pdf.close()

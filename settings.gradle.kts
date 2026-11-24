@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "OSISPaperless"
+rootProject.name = "My SeeHear"
 include(":shared")
 include(":androidApp")

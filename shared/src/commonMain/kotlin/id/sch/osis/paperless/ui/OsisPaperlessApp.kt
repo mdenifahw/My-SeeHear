@@ -88,7 +88,7 @@ fun OsisPaperlessApp(controller: AppController) {
                         title = {
                             Column {
                                 Text(
-                                    "OSISPaperless",
+                                    "My SeeHear",
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = OsisColors.PrimaryDark,

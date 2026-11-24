@@ -101,7 +101,7 @@ fun LoginScreen(ui: AppUiState, controller: AppController) {
                 Icon(Icons.Rounded.AutoStories, contentDescription = null, tint = Color.White, modifier = Modifier.size(36.dp))
             }
             Spacer(Modifier.height(14.dp))
-            Text("OSISPaperless", style = MaterialTheme.typography.headlineMedium, color = OsisColors.TextPrimary)
+            Text("My SeeHear", style = MaterialTheme.typography.headlineMedium, color = OsisColors.TextPrimary)
             Spacer(Modifier.height(4.dp))
             Text(
                 "Rapat Paperless & Mode Fokus OSIS · MPK SMA",
